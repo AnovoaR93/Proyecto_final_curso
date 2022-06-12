@@ -1,0 +1,28 @@
+<mat-grid-list cols="2" rowHeight="3:2">
+    <mat-grid-tile class="CustomerTile">
+        <customer-form
+            [operationOnSubmit]="createOrder" 
+            [buttonText]="'CREATE user'"
+            [title]="'Create user'"
+            (submitEvent)="handleFormSubmit($event)">
+        </customer-form>
+    </mat-grid-tile>
+    <mat-grid-tile *ngFor="let customer of customers; let i=index">
+        <app-customer-card
+            [index]="i"
+            [customerData]="getDigestedData(i)"
+            *ngIf="!customersOnUpdate[i]"
+            (deleteEvent)="deleteUser($event)"
+            (updateEvent)="loadUpdateForm($event)"
+        ></app-customer-card>
+        <customer-form
+            [operationOnSubmit]="updateOrder" 
+            [index]="i"
+            [buttonText]="'UPDATE user'"
+            [title]="'Update user'"
+            (submitEvent)="handleFormSubmit($event)"
+            [defaultValues]="getDigestedData(i)"
+            *ngIf="customersOnUpdate[i]">
+        </customer-form>
+    </mat-grid-tile>
+</mat-grid-list>

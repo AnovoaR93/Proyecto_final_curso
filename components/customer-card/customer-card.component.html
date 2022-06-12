@@ -1,0 +1,18 @@
+<mat-card class="CCard">
+    <div class="topColourBand"></div>
+    <mat-card-header>
+        <mat-card-title>{{customerData.surename}}, {{customerData.name}}</mat-card-title>
+        <mat-card-subtitle>ID {{customerData.id}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <li><strong>Sex:</strong> {{customerData.sex}}</li>
+        <li><strong>DNI:</strong> {{customerData.dni}}</li>
+        <li><strong>Phone:</strong> {{customerData.phone}}</li>
+        <div class="buttonHolder">
+            <button mat-raised-button (click)="updateCustomer()">Update user</button>
+            <button mat-raised-button color="warn" (click)="deleteCustomer()">Delete user</button>
+        </div>
+    </mat-card-content>
+    <div class="bottomColourBand"></div>
+
+</mat-card>
